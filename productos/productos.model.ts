@@ -5,7 +5,7 @@ export interface IProductos {
     description: string;
     category: string;
     price: Number;
-    calification: Number,
+    qualification: Number,
     user: Schema.Types.ObjectId;
     active: boolean;
 }
@@ -28,7 +28,7 @@ const productSchema = new Schema<IProductos>(
             type: Number,
             required: true
         },
-        calification: {
+        qualification: {
             type: Number,
             required: true
         },

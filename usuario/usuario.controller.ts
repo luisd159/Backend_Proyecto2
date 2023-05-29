@@ -24,7 +24,7 @@ export const createUser = async (req: Request, res: Response) => {
 //obtener todos los usuarios
 export async function getAllUser(req: Request, res: Response) {
     try {
-        const users = await User.find();
+        const users = await User.find({active:true});
         if (users.length != 0) {
             res.status(200).json(users);
         } else {
@@ -58,9 +58,7 @@ export async function getUserByID(req: Request, res: Response) {
 export async function getUserByEmailAndPass(req: Request, res: Response) {
     try {
         const { email, password } = req.query;
-        console.log(email);
         const user = await User.findOne({ email: email, active: true });
-        console.log(user);
         if (user) {
             const isPasswordValid = await bcrypt.compare(password, user.password);
             if (!isPasswordValid) {
@@ -94,7 +92,6 @@ export async function updateUser(req: Request, res: Response) {
             }
         );
         res.status(200).json({
-            message: "usuario actualizado",
             userUpdated
         });
     } catch (error) {
@@ -115,7 +112,6 @@ export async function deleteUser(req: Request, res: Response) {
             }
         );
         res.status(200).json({
-            message: "usuario inhabilitado correctamente",
             userUpdated
         });
     } catch (error) {

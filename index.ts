@@ -3,6 +3,7 @@ import express from "express";
 const cors = require("cors");
 import userRoutes from "./usuario/usuario.routes";
 import productRoutes from "./productos/producto.routes";
+import pedidosRoutes from "./pedidos/pedidos.routes";
 
 //instanciamos la app usando express
 const app = express();
@@ -19,6 +20,7 @@ app.use(express.json());
 //rutas
 app.use("/users", userRoutes);
 app.use("/products", productRoutes )
+app.use("/pedidos",pedidosRoutes)
 
 // Endpoint para 404
 app.use((req: express.Request, res: express.Response) => {
