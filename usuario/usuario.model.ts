@@ -1,5 +1,4 @@
 import { Schema, model } from "mongoose";
-const bcrypt = require('bcrypt');
 
 interface IUser {
     name: string;
