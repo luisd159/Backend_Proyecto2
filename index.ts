@@ -4,6 +4,7 @@ const cors = require("cors");
 import userRoutes from "./usuario/usuario.routes";
 import productRoutes from "./productos/producto.routes";
 import pedidosRoutes from "./pedidos/pedidos.routes";
+import e from "express";
 
 //instanciamos la app usando express
 const app = express();
@@ -26,3 +27,5 @@ app.use("/pedidos",pedidosRoutes)
 app.use((req: express.Request, res: express.Response) => {
     res.status(404).json({ message: "Not found." });
 });
+
+export default app;
